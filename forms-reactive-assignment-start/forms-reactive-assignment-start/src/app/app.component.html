@@ -1,0 +1,31 @@
+<div>
+  <form [formGroup]="form">
+    <div>
+      <label>Email</label>
+      <div>
+        <input class="control" formControlName="email">
+      </div>
+    </div>
+
+    <div formGroupName="projectData">
+      <div>
+        <label>Name</label>
+        <div>
+          <input class="control" formControlName="name">
+        </div>
+      </div>
+      <div>
+        <label>Status</label>
+        <div>
+          <select formControlName="status">
+            <option class="control" *ngFor="let option of getOptions()"
+                    [value]="option.value">{{option.description}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button (click)="onSubmit()">Submit</button>
+    </div>
+  </form>
+</div>
