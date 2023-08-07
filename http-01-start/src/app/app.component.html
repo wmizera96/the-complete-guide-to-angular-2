@@ -51,7 +51,25 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <p>No posts available!</p>
+      <p *ngIf="loadedPosts.length === 0 && !isFetching && !error; else post_list">No posts available!</p>
+      <ng-template #post_list>
+        <ul *ngIf="!isFetching && !error; else fetching" class="list-group">
+            <li *ngFor="let post of loadedPosts" class="list-group-item">
+              <h3>{{post.title}}</h3>
+              <p>{{post.content}}</p>
+            </li>
+        </ul>
+        <ng-template #fetching>
+          <p *ngIf="!error">
+            Loading...
+          </p>
+          <div *ngIf="error" class="alert alert-danger">
+            <h1>An Error occured</h1>
+            <p>{{error}}</p>
+            <button class="btn btn-danger" (click)="onHandleError()">OKAY!</button>
+          </div>
+        </ng-template>
+      </ng-template>
     </div>
   </div>
 </div>
