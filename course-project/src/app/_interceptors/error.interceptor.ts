@@ -23,6 +23,8 @@ export class ErrorInterceptor implements HttpInterceptor {
               errorMessage = "This email already exists";
             case "INVALID_PASSWORD":
               errorMessage = "Invalid password";
+            case "EMAIL_NOT_FOUND":
+              errorMessage = "Invalid email";
             default:
               console.log(error);
           }
