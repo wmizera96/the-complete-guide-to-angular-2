@@ -7,7 +7,7 @@ import {
   HttpParams,
 } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { AuthService } from "../auth/auth.service";
+import { AuthService } from "./auth.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -26,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
       return next.handle(newRequest);
     }
-    
+
     return next.handle(request);
   }
 }
